@@ -1,3 +1,3 @@
 #!/bin/bash
-command="$(python ~/Projects/fzf-launcher/fzf_launcher.py $(python ~/Projects/fzf-launcher/fzf_launcher.py | fzf))"
+command="$(python ~/Projects/fzf-launcher/fzf_launcher.py)"
 bash -c "$command"

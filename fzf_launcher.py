@@ -1,4 +1,6 @@
+"""Entry point for fzf-launcher."""
 import sys
+from subprocess import run, PIPE
 
 chrome_mahi = "google-chrome-mahi"
 chrome_personal = "google-chrome-personal"
@@ -37,17 +39,24 @@ commands = {
 }
 
 
-def print_tags() -> None:
+def tags() -> str:
     options = "\n".join(list(commands.keys()))
-    print(options)
+    return options
 
 
 def convoluted() -> None:
     if len(sys.argv) == 1:
-        print_tags()
+        print(tags())
     else:
         print(commands[sys.argv[1]])
 
 
+def less_convoluted() -> None:
+    c = run(f"echo \"{tags()}\" | fzf", shell=True, stdin=PIPE, stdout=PIPE)
+    tag = c.stdout.decode().strip()
+    if tag != "":
+        print(commands[tag])
+
+
 if __name__ == "__main__":
-    convoluted()
+    less_convoluted()
