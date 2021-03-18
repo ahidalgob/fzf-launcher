@@ -1,3 +1,4 @@
+#!/bin/python
 """Entry point for fzf-launcher."""
 import sys
 from subprocess import run, PIPE
@@ -44,18 +45,18 @@ def tags() -> str:
     return options
 
 
-def convoluted() -> None:
-    if len(sys.argv) == 1:
-        print(tags())
-    else:
-        print(commands[sys.argv[1]])
-
-
 def less_convoluted() -> None:
+    if "--wrapper" in sys.argv:
+        run(
+            "alacritty --class=Alacritty,FloatingAlacritty -e "
+            "python ~/Projects/fzf-launcher/fzf_launcher.py & disown",
+            shell=True)
+        return
+
     c = run(f"echo \"{tags()}\" | fzf", shell=True, stdin=PIPE, stdout=PIPE)
     tag = c.stdout.decode().strip()
     if tag != "":
-        print(commands[tag])
+        run(commands[tag], shell=True)
 
 
 if __name__ == "__main__":
