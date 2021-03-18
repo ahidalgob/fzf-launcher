@@ -1,3 +1,0 @@
-#!/bin/bash
-# copy this into your path
-alacritty --class=Alacritty,FloatingAlacritty -e python ~/Projects/fzf-launcher/fzf_launcher.py & disown
