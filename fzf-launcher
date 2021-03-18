@@ -1,0 +1,4 @@
+#!/bin/bash
+# copy this into your path
+alacritty --class=Alacritty,FloatingAlacritty -e bash ~/Projects/fzf-launcher/launcher.sh &
+disown
