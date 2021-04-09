@@ -20,7 +20,12 @@ def launch() -> None:
     c = run(f"echo \"{tags}\" | fzf", shell=True, stdin=PIPE, stdout=PIPE)
     tag = c.stdout.decode().strip()
     if tag != "":
-        run(f'nohup {commands[tag]}', shell=True)
+        command = commands[tag]
+        if isinstance(command, str):
+            command = [command]
+        else:
+            for c in command:
+                run(f'nohup {c} &', shell=True)
 
 
 if __name__ == "__main__":
