@@ -23,9 +23,8 @@ def launch() -> None:
         command = commands[tag]
         if isinstance(command, str):
             command = [command]
-        else:
-            for c in command:
-                run(f'nohup {c} &', shell=True)
+        for c in command:
+            run(f'nohup {c} &', shell=True)
 
 
 if __name__ == "__main__":
