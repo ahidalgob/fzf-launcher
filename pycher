@@ -1,10 +1,10 @@
 #!/bin/python
-"""Entry point for fzf-launcher."""
+"""Entry point for pycher."""
 import sys
 import os
 from subprocess import run, PIPE
 
-sys.path.append(f'{os.getenv("HOME")}/.config/fzf-launcher/')
+sys.path.append(f'{os.getenv("HOME")}/.config/pycher/')
 root_path = os.path.dirname(os.path.realpath(__file__))
 scripts = root_path + "/scripts"
 

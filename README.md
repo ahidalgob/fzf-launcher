@@ -5,7 +5,7 @@ Requirements:
 
 
 Config:
-Write a python file (~/.config/fzf-launcher/config.py) that defines a list of pairs (tag, command) named "commands"
+Write a python file (~/.config/pycher/config.py) that defines a list of pairs (tag, command) named "commands"
 
 ```python
 commands = {
