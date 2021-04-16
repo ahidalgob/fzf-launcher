@@ -6,12 +6,12 @@ from subprocess import run, PIPE
 
 sys.path.append(f'{os.getenv("HOME")}/.config/pycher/')
 root_path = os.path.dirname(os.path.realpath(__file__))
-scripts = root_path + "/../scripts"
+scripts = root_path + "/scripts"
 
 from config import commands
 
 
-def launch() -> None:
+def main() -> None:
     if "--wrapper" in sys.argv:
         run(
             "alacritty --class=Alacritty,Pycher -e "
@@ -36,4 +36,4 @@ def launch() -> None:
 
 
 if __name__ == "__main__":
-    launch()
+    main()
