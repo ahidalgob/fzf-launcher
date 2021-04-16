@@ -15,7 +15,7 @@ def launch() -> None:
     if "--wrapper" in sys.argv:
         run(
             "alacritty --class=Alacritty,Pycher -e "
-            f"python {root_path}/{os.path.basename(__file__)} & disown",
+            f"python {__file__} & disown",
             shell=True)
         return
 
