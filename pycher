@@ -5,7 +5,8 @@ import os
 from subprocess import run, PIPE
 
 sys.path.append(f'{os.getenv("HOME")}/.config/fzf-launcher/')
-scripts = os.path.dirname(os.path.realpath(__file__)) + "/scripts"
+root_path = os.path.dirname(os.path.realpath(__file__))
+scripts = root_path + "/scripts"
 
 from config import commands
 
@@ -14,7 +15,7 @@ def launch() -> None:
     if "--wrapper" in sys.argv:
         run(
             "alacritty --class=Alacritty,FzfLauncher -e "
-            "python ~/Projects/fzf-launcher/fzf_launcher.py & disown",
+            f"python {root_path}/{os.path.basename(__file__)} & disown",
             shell=True)
         return
 
